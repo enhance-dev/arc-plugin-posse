@@ -28,6 +28,13 @@ module.exports = {
           src,
         }
       ]
+    },
+    tables () {
+      return {
+        name: 'rssfeeditems',
+        partitionKey: 'link',
+        partitionKeyType: 'string',
+      }
     }
   }
 }
