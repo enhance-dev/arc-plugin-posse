@@ -1,0 +1,38 @@
+{
+    "name": "@enhance/arc-plugin-posse",
+    "version": "0.0.1",
+    "description": "Enhance/Architect plugin for syndicating everywhere",
+    "main": "src/plugins/arc-plugin-posse/index.mjs",
+    "scripts": {
+        "lint": "eslint . --fix",
+        "test": "tape 'test/*-test.js'  | tap-arc --verbose"
+    },
+    "dependencies": {
+        "@architect/functions": "^5.3.1"
+    },
+    "devDependencies": {
+        "@architect/architect": "^10.8.0",
+        "@architect/eslint-config": "^2.0.0",
+        "@architect/plugin-lambda-invoker": "^1.0.0",
+        "eslint": "^7.11.0",
+        "tap-arc": "^0.1.0",
+        "tape": "^5.3.1"
+    },
+    "eslintConfig": {
+        "extends": "@architect/eslint-config"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/enhance-dev/arc-plugin-posse.git"
+    },
+    "keywords": [
+        "posse",
+        "enhance",
+        "architect"
+    ],
+    "license": "Apache-2",
+    "bugs": {
+        "url": "https://github.com/enhance-dev/arc-plugin-posse/issues"
+    },
+    "homepage": "https://github.com/enhance-dev/arc-plugin-posse#readme"
+}
