@@ -8,12 +8,9 @@ defaults:
     shell: bash
 
 jobs:
-  # ----- Only git tag testing + package publishing beyond this point ----- #
-
-  # Publish to package registries
-  publish:
+  # Test the repo
+  build:
     # Setup
-    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
 
     # Go
@@ -35,6 +32,17 @@ jobs:
         env:
           CI: true
 
+  # ----- Only git tag testing + package publishing beyond this point ----- #
+
+  # Publish to package registries
+  publish:
+    # Setup
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+
+    # Go
+    steps:
       # Publish to npm
       - name: Publish @RC to npm
         if: contains(github.ref, 'RC')
