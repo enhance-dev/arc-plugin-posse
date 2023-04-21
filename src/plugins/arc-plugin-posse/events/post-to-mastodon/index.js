@@ -5,13 +5,14 @@ const handler = arc.events.subscribe(async (event) => {
   const { item } = event
   const { title, description, link } = item
 
+  const descLen = 494 - title[0].length - link[0].length
+  const desc = description[0].length >= descLen ? `${description[0].substring(0, descLen)}…` : description[0]
+
   const toot = `${title[0]}
 
-${description[0]}
+${desc}
 
-${link}`
-
-  // console.log(toot)
+${link[0]}`
 
   const masto = await login({
     url: process.env.MASTODON_URL,
