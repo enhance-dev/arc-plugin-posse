@@ -1,3 +1,5 @@
+![enhance-type](https://user-images.githubusercontent.com/76308/223593101-1f65f07f-49c4-4a13-9203-4ab4ff72f097.svg)
+
 # @enhance/arc-plugin-posse
 
 > Publish (on your) Own Site, Syndicate Elsewhere plugin for Enhance applications.
