@@ -13,6 +13,17 @@ const handler = arc.events.subscribe(async (event) => {
     })
   }
 
+  // user has setup Twitter syndication
+  if (process.env.TWITTER_API_KEY && process.env.TWITTER_API_SECRET &&
+      process.env.TWITTER_ACCESS_TOKEN && process.env.TWITTER_ACCESS_TOKEN_SECRET ) {
+    await arc.events.publish({
+      name: 'post-to-twitter',
+      payload: {
+        item
+      },
+    })
+  }
+
   return
 })
 

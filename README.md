@@ -43,6 +43,7 @@ since "2023-04-02"
 ## Syndication Targets
 
 - [Mastodon](#mastodon)
+- [Twitter](#twitter)
 
 ### Mastodon
 
@@ -51,7 +52,7 @@ In order to enable Mastodon syndication the user will need to set two environmen
 - `MASTODON_TOKEN` - Go to your settings page, open Development, and click the New Application button to create your personal access token.
 - `MASTODON_URL` - the url of your Mastodon server. For example: `https://fosstodon.org/`
 
-Once you set this two environment variables you will need to deploy your application again for them to be read properly.
+Once you set these two environment variables you will need to deploy your application again for them to be read properly.
 
 Then when a new posts is detected it will be syndicated to Mastodon following the format:
 
@@ -62,5 +63,37 @@ Item Description
 
 Item Link
 ```
+
+### Twitter
+
+In order to enable Twitter syndication the user will need to set four environment variables in their app, `TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_TOKEN_SECRET`.
+
+- `TWITTER_API_KEY` - This is the API Key under Consumer Keys in your app on developer.twitter.com.
+- `TWITTER_API_SECRET` - This is the API Secret under Consumer Keys in your app on developer.twitter.com
+- `TWITTER_ACCESS_TOKEN` - This is the Access Token under Authentication Tokens in your app on developer.twitter.com.
+- `TWITTER_ACCESS_TOKEN_SECRET` - This is the Access Token under Authentication Tokens in your app on developer.twitter.com
+
+to generate the `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_TOKEN_SECRET` you need to jump through a few hoops (as of this writing).
+
+1. On the `Settings` tab of your app under `User authentication settings` click edit.
+2. Set the `App Permissions` to `Read and write and Direct message`.
+3. Set `Type of App` to `Web App, Automated App or Bot`.
+4. Fill out the required fields under `App Info`.
+5. Save
+6. Under the `Keys and tokens` tab of your app click `Regenerate` next to `Access Token and Secret `.
+
+Once you set these four environment variables you will need to deploy your application again for them to be read properly.
+
+Then when a new posts is detected it will be syndicated to Twitter following the format:
+
+```
+Item Title
+
+Item Description
+
+Item Link
+```
+
+
 
 

@@ -21,6 +21,10 @@ module.exports = {
           src: `${src}/post-to-mastodon`,
         },
         {
+          name: 'post-to-twitter',
+          src: `${src}/post-to-twitter`,
+        },
+        {
           name: 'syndicate-post',
           src: `${src}/syndicate-post`,
         }
