@@ -1,6 +1,10 @@
 ![enhance-type](https://user-images.githubusercontent.com/76308/223593101-1f65f07f-49c4-4a13-9203-4ab4ff72f097.svg)
 
-# @enhance/arc-plugin-posse
+# [@enhance/arc-plugin-posse](https://www.npmjs.com/package/@enhance/arc-plugin-posse)
+
+![CI](https://github.com/enhance-dev/arc-plugin-posse/actions/workflows/ci.yml/badge.svg)
+[![Published on npm](https://img.shields.io/npm/v/@enhance/arc-plugin-posse.svg?logo=npm)](https://www.npmjs.com/package/@enhance/arc-plugin-posse)
+
 
 > Publish (on your) Own Site, Syndicate Elsewhere plugin for Enhance applications.
 
