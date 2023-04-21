@@ -6,13 +6,23 @@ const arc = require('@architect/functions')
 async function handler () {
   const items = await getFeedItems()
   const posts = await getPosts()
+  const sinceDate = process.env.SINCE ? new Date(process.env.SINCE) : new Date()
 
   // Find out what items are new
-  const filteredItems = items.filter(item => !posts.find(post => post?.link === item.link[0]))
+  const filteredItems = items.filter(item => sinceDate < new Date(item.pubDate[0])).filter(item => !posts.find(post => post?.link === item.link[0]))
 
   // Save new items to the database
   if (filteredItems.length > 0) {
     await updatePosts(filteredItems)
+    // eslint-disable-next-line no-undef
+    await Promise.all(filteredItems.map(async (item) => {
+      await arc.events.publish({
+        name: 'syndicate-post',
+        payload: {
+          item
+        },
+      })
+    }))
   }
 
   return

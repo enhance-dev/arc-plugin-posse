@@ -4,17 +4,21 @@
     "description": "Enhance/Architect plugin for syndicating everywhere",
     "main": "src/plugins/arc-plugin-posse/index.mjs",
     "scripts": {
+        "enhnace": "enhance",
         "lint": "eslint . --fix",
+        "start": "npx enhance dev",
         "test": "tape 'test/*-test.js'  | tap-arc --verbose"
     },
     "dependencies": {
         "@architect/functions": "^5.3.1",
+        "masto": "^5.11.1",
         "xml2js": "^0.5.0"
     },
     "devDependencies": {
         "@architect/architect": "^10.8.0",
         "@architect/eslint-config": "^2.0.0",
         "@architect/plugin-lambda-invoker": "^1.0.0",
+        "@enhance/cli": "^0.0.7",
         "eslint": "^7.11.0",
         "tap-arc": "^0.1.0",
         "tape": "^5.3.1"
