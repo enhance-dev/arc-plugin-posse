@@ -1,6 +1,9 @@
 const arc = require('@architect/functions')
 const https = require('https')
 const TurndownService = require('turndown')
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
 
 const handler = arc.events.subscribe(async (event) => {
   const { item } = event
@@ -46,14 +49,40 @@ const handler = arc.events.subscribe(async (event) => {
     },
   }
 
-  const result = await new Promise((resolve, reject) => {
-    const req = https.request('https://dev.to/api/articles', options, (res) => {
+  const result = await postToDevTo(options, postData)
+
+  // Need to deal with 429 issues from dev.to.
+  //
+  let retryCount = 0
+  let { retryAfter, statusCode } = result
+  while (statusCode === 429 && retryCount < 2) {
+    retryCount++
+    await sleep((retryAfter * 1000) + (retryCount * 200))
+    const retryResult = await postToDevTo(options, postData)
+    statusCode = retryResult.statusCode
+    retryAfter = retryResult.retry
+    if (statusCode === 429 && retryCount >= 2) {
+      console.log(`Giving up after 3 tries. Manually add ${link[0]} to dev.to.`)
+    }
+  }
+
+  return
+})
+
+function postToDevTo (options, postData) {
+  return new Promise((resolve, reject) => {
+    const req = https.request('https://dev.to/api/articles', options, async (res) => {
       let responseBody = ''
       res.on('data', (chunk) => {
         responseBody += chunk
       })
       res.on('end', () => {
-        resolve(responseBody)
+        resolve({
+          statusCode: res.statusCode,
+          statusMessage: res.statusMessage,
+          body: responseBody,
+          retry: res.headers['retry-after'] || 0
+        })
       })
     })
     req.on('error', (err) => {
@@ -62,10 +91,7 @@ const handler = arc.events.subscribe(async (event) => {
     req.write(postData)
     req.end()
   })
-
-  console.log(result)
-  return
-})
+}
 
 function cleanAttribute (attribute) {
   return attribute ? attribute.replace(/(\n+\s*)+/g, '\n') : ''
