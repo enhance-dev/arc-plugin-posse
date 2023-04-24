@@ -24,6 +24,16 @@ const handler = arc.events.subscribe(async (event) => {
     })
   }
 
+  // user has setup Dev.to syndication
+  if (process.env.DEV_TO_API_KEY) {
+    await arc.events.publish({
+      name: 'post-to-devto',
+      payload: {
+        item
+      },
+    })
+  }
+
   return
 })
 

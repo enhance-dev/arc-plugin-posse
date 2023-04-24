@@ -17,6 +17,10 @@ module.exports = {
       let src = __dirname + '/events'
       return [
         {
+          name: 'post-to-devto',
+          src: `${src}/post-to-devto`,
+        },
+        {
           name: 'post-to-mastodon',
           src: `${src}/post-to-mastodon`,
         },
