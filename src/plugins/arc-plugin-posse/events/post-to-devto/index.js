@@ -33,7 +33,7 @@ const handler = arc.events.subscribe(async (event) => {
       title: title[0],
       description: description[0],
       canonical_url: link[0],
-      published: false,
+      published: true,
       body_markdown: markdown,
       tags: category,
       main_image
@@ -61,10 +61,15 @@ const handler = arc.events.subscribe(async (event) => {
     const retryResult = await postToDevTo(options, postData)
     statusCode = retryResult.statusCode
     retryAfter = retryResult.retry
-    if (statusCode === 429 && retryCount >= 2) {
-      console.log(`Giving up after 3 tries. Manually add ${link[0]} to dev.to.`)
-    }
   }
+
+  if (statusCode === 429 && retryCount >= 2) {
+    console.log(`Giving up after 3 tries. Manually add ${link[0]} to dev.to.`)
+  }
+  else {
+    console.log(`Syndicated ${link[0]} to dev.to.`)
+  }
+
 
   return
 })
