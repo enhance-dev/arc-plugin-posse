@@ -42,8 +42,19 @@ since "2023-04-02"
 
 ## Syndication Targets
 
+- [Dev.to](#dev.to)
 - [Mastodon](#mastodon)
 - [Twitter](#twitter)
+
+### Dev.to
+
+In order to enable Dev.to syndication the user will need to set one environment variables in your app, `DEV_TO_API_KEY`.
+
+- `DEV_TO_API_KEY` - visit https://dev.to/settings/extensions. In the "DEV API Keys" section create a new key by adding a description and clicking on "Generate API Key"
+
+Once you set this environment variable you will need to deploy your application again for them to be read properly.
+
+Then when a new posts is detected it will be syndicated to Dev.to. The plugin will convert your RSS feed item to Dev.to compatible markdown.
 
 ### Mastodon
 
