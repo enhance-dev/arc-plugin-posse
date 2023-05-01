@@ -34,6 +34,16 @@ const handler = arc.events.subscribe(async (event) => {
     })
   }
 
+  // user has setup Dev.to syndication
+  if (process.env.BLUESKY_USERNAME && process.env.BLUESKY_PASSWORD) {
+    await arc.events.publish({
+      name: 'post-to-bluesky',
+      payload: {
+        item
+      },
+    })
+  }
+
   return
 })
 

@@ -42,9 +42,29 @@ since "2023-04-02"
 
 ## Syndication Targets
 
+- [Bluesky](#bluesky)
 - [Dev.to](#dev.to)
 - [Mastodon](#mastodon)
 - [Twitter](#twitter)
+
+### Bluesky
+
+In order to enable Bluesky syndication the user will need to set two environment variables in their app, `BLUESKY_USERNAME` and `BLUESKY_PASSWORD`.
+
+- `BLUESKY_USERNAME` - your Bluesky username without the leading `@` symbol.
+- `BLUESKY_PASSWORD` - the password for your Bluesky account.
+
+Once you set these two environment variables you will need to deploy your application again for them to be read properly.
+
+Then when a new posts is detected it will be syndicated to Bluesky following the format:
+
+```
+Item Title
+
+Item Description
+
+Item Link
+```
 
 ### Dev.to
 
