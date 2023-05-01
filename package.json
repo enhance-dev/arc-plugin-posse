@@ -1,6 +1,6 @@
 {
     "name": "@enhance/arc-plugin-posse",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "Enhance/Architect plugin for syndicating everywhere",
     "main": "src/plugins/arc-plugin-posse/index.js",
     "scripts": {
