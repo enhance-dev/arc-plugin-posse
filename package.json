@@ -7,7 +7,7 @@
         "enhnace": "enhance",
         "lint": "eslint . --fix",
         "start": "npx enhance dev",
-        "test": "tape 'test/*-test.js'  | tap-arc --verbose"
+        "test": "tape 'test/*-test.js' | tap-arc --verbose"
     },
     "dependencies": {
         "@architect/functions": "^7.0.0",
