@@ -32,6 +32,9 @@
         "type": "git",
         "url": "git+https://github.com/enhance-dev/arc-plugin-posse.git"
     },
+    "engines" : {
+        "node" : ">=18.0.0"
+    },
     "keywords": [
         "posse",
         "enhance",

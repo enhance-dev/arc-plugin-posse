@@ -1,5 +1,5 @@
 const arc = require('@architect/functions')
-const { login } = require('masto')
+const { createRestAPIClient } = require('masto')
 
 const handler = arc.events.subscribe(async (event) => {
   const { item } = event
@@ -14,7 +14,7 @@ ${desc}
 
 ${link[0]}`
 
-  const masto = await login({
+  const masto = createRestAPIClient({
     url: process.env.MASTODON_URL,
     accessToken: process.env.MASTODON_TOKEN,
   })
