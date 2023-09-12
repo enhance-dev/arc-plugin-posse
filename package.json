@@ -1,6 +1,6 @@
 {
     "name": "@enhance/arc-plugin-posse",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "description": "Enhance/Architect plugin for syndicating everywhere",
     "main": "src/plugins/arc-plugin-posse/index.js",
     "scripts": {
@@ -32,8 +32,8 @@
         "type": "git",
         "url": "git+https://github.com/enhance-dev/arc-plugin-posse.git"
     },
-    "engines" : {
-        "node" : ">=18.0.0"
+    "engines": {
+        "node": ">=18.0.0"
     },
     "keywords": [
         "posse",
