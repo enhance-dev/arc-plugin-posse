@@ -95,7 +95,9 @@ Item Description
 Item Link
 ```
 
-### Twitter
+### Twitter (Deprecated)
+
+> Support for Twitter (X) is deprecated.
 
 In order to enable Twitter syndication the user will need to set four environment variables in their app, `TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_TOKEN_SECRET`.
 
