@@ -52,7 +52,13 @@ async function getFeedItems () {
 function getFeed (feed) {
   const client = feed.protocol === 'http:' ? http : https
   return new Promise((resolve, reject) => {
-    const req = client.request(feed, (res) => {
+    const req = client.request({ hostname: feed.host,
+      port: feed.port,
+      path: feed.pathname,
+      method: 'GET',
+      headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36' } }, (res) => {
+      console.log('statusCode:', res.statusCode)
+      console.log('headers:', res.headers)
       let responseBody = ''
       res.on('data', (chunk) => {
         responseBody += chunk
